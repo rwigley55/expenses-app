@@ -4,6 +4,7 @@ import "./ExpensesFilter.css";
 
 const ExpensesFilter = (props) => {
   const dropdownChangeHandler = (event) => {
+    //Forwarding the event.target.value through the onChangeFilter prop. Expenses.js receives this through the use of the ExpensesFilter component
     props.onChangeFilter(event.target.value);
   };
 
