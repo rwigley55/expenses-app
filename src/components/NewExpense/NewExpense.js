@@ -9,7 +9,7 @@ const NewExpense = (props) => {
       ...enteredExpenseData,
       id: Math.random().toString()
     };
-    //Passing data to this function through props, can be lifted up with state
+  //Passing data to this function through props, can be lifted up with state
     props.onAddExpense(expenseData);
   };
 
