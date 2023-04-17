@@ -12,9 +12,24 @@ const Expenses = (props) => {
     setFilteredYear(selectedYear);
   };
 
-const filteredExpenses = props.items.filter(expense => {
-  return expense.date.getFullYear().toString() === filteredYear;
-});
+  const filteredExpenses = props.items.filter((expense) => {
+    return expense.date.getFullYear().toString() === filteredYear;
+  });
+
+  //Condition followed by a ? for what we want to do with the condition. Else is ":" This example is broken up into 2 statments
+  let expensesContent = <p>No expenses found.</p>;
+
+  //Map every expense in my expenses array into an ExpenseItem JSX element
+  if (filteredExpenses.length > 0) {
+    expensesContent = filteredExpenses.map((expense) => (
+      <ExpenseItem
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+      />
+    ));
+  }
 
   return (
     <div>
@@ -23,15 +38,7 @@ const filteredExpenses = props.items.filter(expense => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        {/* Map every expense in my expenses array into an ExpenseItem JSX element */}
-        {filteredExpenses.map((expense) => (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))}
+        {expensesContent}
       </Card>
     </div>
   );
