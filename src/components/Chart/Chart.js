@@ -6,6 +6,9 @@ import "./Chart.css";
 //When the Chart componenet is being used somewhere in our App, we want to receive the dataPoints that should be plotted as props
 //So that the Chart componenet is configurable
 const Chart = (props) => {
+  const dataPointValues = props.dataPoints.map(dataPoint => dataPoint.value);
+  const totalMaximum = Math.max(...dataPointValues);
+
   return (
     <div className="chart">
       {/* Mapping every data point to a ChartBar */}
@@ -17,7 +20,7 @@ const Chart = (props) => {
         <ChartBar
           key={dataPoint.label}
           value={dataPoint.value}
-          maxValue={null}
+          maxValue={totalMaximum}
           label={dataPoint.label}
         />
       ))}
