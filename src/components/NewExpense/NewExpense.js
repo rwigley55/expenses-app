@@ -12,6 +12,7 @@ const NewExpense = (props) => {
       id: Math.random().toString(),
     };
     //Passing data to this function through props, can be lifted up with state
+    //This closes the new expense box in the ExpenseForm
     props.onAddExpense(expenseData);
     setIsEditing(false);
   };
